@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "diagnostics": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es7"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "outDir": "dist/",
+    "pretty": true,
+    "removeComments": true,
+    "strict": true,
+    "target": "esnext"
+  },
+  "exclude": [
+    "src/**/*.spec.*",
+    "node_modules",
+    "**/__tests__/*",
+    "**/__mocks__/*",
+    "**/__mockData__/*"
+  ],
+  "include": ["src"],
+  "typeRoots": ["./node_modules/@types", "./typings"]
+}
