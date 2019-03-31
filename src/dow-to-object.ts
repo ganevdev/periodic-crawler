@@ -2,6 +2,8 @@ import _ from 'lodash/fp';
 import sleep from 'sleep';
 import tunnel from 'tunnel';
 
+import { AgentObject, UrlBodyObject } from './types';
+
 // urls in, objects wish body out
 
 function makeGotOptions(

@@ -3,6 +3,12 @@ import got from 'got';
 import dowToObject from './dow-to-object';
 import proxyFilter from './proxy-filter';
 import proxyToAgent from './proxy-to-agent';
+import {
+  AgentObject,
+  PeriodicCrawlerOptions,
+  PeriodicCrawlerOptionsProxy,
+  UrlBodyObject
+} from './types';
 
 async function whatProxyToUse(
   options: PeriodicCrawlerOptionsProxy

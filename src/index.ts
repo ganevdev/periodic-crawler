@@ -1,4 +1,5 @@
 import createPeriodicCrawler from './create-periodic-crawler';
+import { PeriodicCrawlerOptions, UrlBodyObject } from './types';
 
 const defaults: PeriodicCrawlerOptions = {
   proxy: {

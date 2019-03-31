@@ -1,6 +1,6 @@
 {
   "name": "periodic-crawler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "periodic-crawler",
   "files": [
     "dist"

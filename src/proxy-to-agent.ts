@@ -1,5 +1,7 @@
 import splitProxy from 'split-proxy';
 
+import { AgentObject } from './types';
+
 export default function proxyToAgent(
   proxies: (string | AgentObject)[]
 ): AgentObject[] {

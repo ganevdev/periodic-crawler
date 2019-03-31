@@ -1,16 +1,16 @@
-interface AgentObject {
+export interface AgentObject {
   host: string;
   port?: number;
   proxyAuth?: string;
 }
 
-interface UrlBodyObject {
+export interface UrlBodyObject {
   url: string;
   dowDate: Date;
   body: string;
 }
 
-interface PeriodicCrawlerOptionsProxy {
+export interface PeriodicCrawlerOptionsProxy {
   useProxy: boolean;
   filterProxy: boolean;
   proxies: string[];
@@ -18,7 +18,7 @@ interface PeriodicCrawlerOptionsProxy {
   proxySimpleTestOptions: string | object;
 }
 
-interface PeriodicCrawlerOptions {
+export interface PeriodicCrawlerOptions {
   proxy: PeriodicCrawlerOptionsProxy;
   settings: {
     pauseMin: number;
