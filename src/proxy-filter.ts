@@ -6,17 +6,22 @@ import _ from 'lodash/fp';
 import proxySimpleTest from 'proxy-simple-test';
 
 export default async function proxyFilter(
-  agentProxies: AgentObject[],
+  proxies: string[],
   url: string = 'example.com',
-  options: string | object = '<h1>Example Domain</h1>'
-): Promise<AgentObject[]> {
+  proxySimpleTestOptions: string | object = '<h1>Example Domain</h1>',
+  options: {
+    throwErrorIfNoProxies: boolean;
+  }
+): Promise<string[]> {
   try {
     const proxiesArray = await Promise.all(
-      await agentProxies.map(async (agentProxie) => {
-        const proxyString = 
-        const res = await proxySimpleTest(proxyString, url, options);
+      await proxies.map(async (proxy) => {
+        if (proxy === 'localhost') {
+          return '';
+        }
+        const res = await proxySimpleTest(proxy, url, proxySimpleTestOptions);
         if (res === true) {
-          return agentProxie;
+          return proxy;
         } else {
           return '';
         }
@@ -24,7 +29,11 @@ export default async function proxyFilter(
     );
     const proxiesArrayCompact = await _.compact(proxiesArray);
     if (proxiesArrayCompact.length === 0) {
-      throw console.error('Нет работающих прокси');
+      if (options.throwErrorIfNoProxies) {
+        throw console.error('Нет работающих прокси');
+      } else {
+        return ['localhost'];
+      }
     } else {
       return proxiesArrayCompact;
     }

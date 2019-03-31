@@ -28,9 +28,11 @@ function makeGotOptions(
 
 async function dowToObjectMap(
   {
-    pause
+    pauseMin,
+    pauseMax
   }: {
-    pause: number;
+    pauseMin: number;
+    pauseMax: number;
   },
   proxyAgents: AgentObject[],
   gotOptions: Record<string, any>,
@@ -45,7 +47,7 @@ async function dowToObjectMap(
           url,
           _.assign(makeGotOptions(proxyToUse), gotOptions)
         );
-        sleep.sleep(_.random(pause, pause * 2));
+        sleep.sleep(_.random(pauseMin, pauseMax));
         if (req.statusCode === 200) {
           return { url: url, dowDate: new Date(), body: req.body };
         } else {
@@ -79,10 +81,12 @@ function onlyUrl(
 const dowToObject = _.curry(
   async (
     {
-      pause,
+      pauseMin,
+      pauseMax,
       maxWhileNumber
     }: {
-      pause: number;
+      pauseMin: number;
+      pauseMax: number;
       maxWhileNumber: number;
     },
     proxyAgents: AgentObject[],
@@ -107,7 +111,7 @@ const dowToObject = _.curry(
         whileGo = false;
       }
       arrayWishObjectsNew = await dowToObjectMap(
-        { pause },
+        { pauseMin, pauseMax },
         proxyAgents,
         gotOptions,
         gotLib,

@@ -1,6 +1,6 @@
 interface AgentObject {
   host: string;
-  port: number;
+  port?: number;
   proxyAuth?: string;
 }
 
