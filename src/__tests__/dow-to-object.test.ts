@@ -1,9 +1,4 @@
-// import got from 'got';
-import _ from 'lodash/fp';
-
 const onlyUrl = require('../dow-to-object').__get__('onlyUrl');
-
-/* eslint-disable sonarjs/no-duplicate-string */
 
 describe('onlyUrl', () => {
   test('onlyUrl()', () => {
@@ -23,13 +18,5 @@ describe('onlyUrl', () => {
       'example.com/test1',
       'example.com/test-folder/test2'
     ]);
-  });
-});
-
-describe('some lodash', () => {
-  test('empty object', () => {
-    expect(_.assign({}, { time: 10000 })).toEqual({ time: 10000 });
-    expect(_.assign(undefined, { time: 10000 })).toEqual({ time: 10000 });
-    expect(_.assign({ time: 10 }, { time: 10000 })).toEqual({ time: 10000 });
   });
 });

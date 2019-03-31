@@ -1,9 +1,6 @@
-// Функция для фильтрации всех прокси из project-settings, возвращающая только работающие прокси
-// если работающих прокси нет - останавливает работу скрипта и выводит ошибку
-
-// import got from 'got';
 import _ from 'lodash/fp';
 import proxySimpleTest from 'proxy-simple-test';
+import sleep from 'sleep';
 
 export default async function proxyFilter(
   proxies: string[],
@@ -16,6 +13,7 @@ export default async function proxyFilter(
   try {
     const proxiesArray = await Promise.all(
       await proxies.map(async (proxy) => {
+        sleep.sleep(1);
         if (proxy === 'localhost') {
           return '';
         }

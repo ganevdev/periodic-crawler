@@ -1,7 +1,5 @@
 import splitProxy from 'split-proxy';
 
-// Функция которая получает строку-прокси, а выдает объект agent
-
 export default function proxyToAgent(
   proxies: (string | AgentObject)[]
 ): AgentObject[] {

@@ -4,23 +4,22 @@ interface AgentObject {
   proxyAuth?: string;
 }
 
-interface AgentFun {
-  proxy: { host: string; port?: string; proxyAuth?: string };
-}
-
 interface UrlBodyObject {
   url: string;
   dowDate: Date;
   body: string;
 }
 
+interface PeriodicCrawlerOptionsProxy {
+  useProxy: boolean;
+  filterProxy: boolean;
+  proxies: string[];
+  urlForTest: string;
+  proxySimpleTestOptions: string | object;
+}
+
 interface PeriodicCrawlerOptions {
-  proxy: {
-    useProxy: boolean;
-    proxies: string[];
-    url: string;
-    proxySimpleTestOptions: string | object;
-  };
+  proxy: PeriodicCrawlerOptionsProxy;
   settings: {
     pauseMin: number;
     pauseMax: number;

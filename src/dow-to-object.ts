@@ -1,13 +1,8 @@
-// import got from 'got';
 import _ from 'lodash/fp';
 import sleep from 'sleep';
 import tunnel from 'tunnel';
 
-// функция получающая массив из ссылок и отдающая объект со скаченными из этих ссылок body
-
-// AgentObject: {
-//   host: 'localhost'
-// }
+// urls in, objects wish body out
 
 function makeGotOptions(
   proxyToUse: AgentObject
