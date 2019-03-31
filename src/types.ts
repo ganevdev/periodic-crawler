@@ -13,3 +13,18 @@ interface UrlBodyObject {
   dowDate: Date;
   body: string;
 }
+
+interface PeriodicCrawlerOptions {
+  proxy: {
+    useProxy: boolean;
+    proxies: string[];
+    url: string;
+    proxySimpleTestOptions: string | object;
+  };
+  settings: {
+    pauseMin: number;
+    pauseMax: number;
+    maxWhileNumber: number;
+  };
+  gotOptions: Record<string, any>;
+}
