@@ -1,5 +1,5 @@
 {
-  "plugins": ["babel-plugin-rewire"],
+  // "plugins": ["babel-plugin-rewire"],
   "presets": [
     "@babel/preset-typescript",
     [
