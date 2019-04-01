@@ -10,9 +10,7 @@ import {
 
 // urls in, objects wish body out
 
-function makeGotOptions(
-  proxyToUse: AgentObject
-): { timeout: number; agent?: unknown } {
+function makeGotOptions(proxyToUse: AgentObject): unknown {
   if (proxyToUse.host === 'localhost') {
     return {
       timeout: 10000
@@ -28,29 +26,23 @@ function makeGotOptions(
 }
 
 async function dowToObjectMap(
-  {
-    pauseMin,
-    pauseMax
-  }: {
-    pauseMin: number;
-    pauseMax: number;
-  },
+  { pauseMin, pauseMax }: PeriodicCrawlerOptionsSettings,
   proxyAgents: AgentObject[],
   gotOptions: Record<string, any>,
-  gotLib: any,
+  gotLibrary,
   arrayUrls: string[]
 ): Promise<UrlBodyObject[]> {
   const arrayUrlsObjects = await Promise.all(
     arrayUrls.map(async (url) => {
       try {
         const proxyToUse = proxyAgents[_.random(0, proxyAgents.length - 1)];
-        const req = await gotLib.get(
+        const request = await gotLibrary.get(
           url,
           _.assign(makeGotOptions(proxyToUse), gotOptions)
         );
         sleep.sleep(_.random(pauseMin, pauseMax));
-        if (req.statusCode === 200) {
-          return { url: url, dowDate: new Date(), body: req.body };
+        if (request.statusCode === 200) {
+          return { url: url, dowDate: new Date(), body: request.body };
         } else {
           return '';
         }
@@ -84,7 +76,7 @@ const dowToObject = _.curry(
     { pauseMin, pauseMax, maxWhileNumber }: PeriodicCrawlerOptionsSettings,
     proxyAgents: AgentObject[],
     gotOptions: Record<string, any>,
-    gotLib: any,
+    gotLibrary: any,
     arrayUrls: string[]
   ): Promise<UrlBodyObject[]> => {
     let whileGo = true;
@@ -104,10 +96,10 @@ const dowToObject = _.curry(
         whileGo = false;
       }
       arrayWishObjectsNew = await dowToObjectMap(
-        { pauseMin, pauseMax },
+        { pauseMin, pauseMax, maxWhileNumber },
         proxyAgents,
         gotOptions,
-        gotLib,
+        gotLibrary,
         arrayUrlsToDow
       );
       arrayWishObjects = [...arrayWishObjects, ...arrayWishObjectsNew];

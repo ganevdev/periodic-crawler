@@ -17,8 +17,12 @@ export default async function proxyFilter(
         if (proxy === 'localhost') {
           return '';
         }
-        const res = await proxySimpleTest(proxy, url, proxySimpleTestOptions);
-        if (res === true) {
+        const response = await proxySimpleTest(
+          proxy,
+          url,
+          proxySimpleTestOptions
+        );
+        if (response === true) {
           return proxy;
         } else {
           return '';
