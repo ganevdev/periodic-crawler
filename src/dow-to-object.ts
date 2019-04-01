@@ -2,7 +2,11 @@ import _ from 'lodash/fp';
 import sleep from 'sleep';
 import tunnel from 'tunnel';
 
-import { AgentObject, UrlBodyObject } from './types';
+import {
+  AgentObject,
+  PeriodicCrawlerOptionsSettings,
+  UrlBodyObject
+} from './types';
 
 // urls in, objects wish body out
 
@@ -77,15 +81,7 @@ function onlyUrl(
 /* eslint-disable fp/no-mutation */
 const dowToObject = _.curry(
   async (
-    {
-      pauseMin,
-      pauseMax,
-      maxWhileNumber
-    }: {
-      pauseMin: number;
-      pauseMax: number;
-      maxWhileNumber: number;
-    },
+    { pauseMin, pauseMax, maxWhileNumber }: PeriodicCrawlerOptionsSettings,
     proxyAgents: AgentObject[],
     gotOptions: Record<string, any>,
     gotLib: any,

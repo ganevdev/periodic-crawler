@@ -18,12 +18,14 @@ export interface PeriodicCrawlerOptionsProxy {
   proxySimpleTestOptions: string | object;
 }
 
-export interface PeriodicCrawlerOptions {
+export interface PeriodicCrawlerOptionsSettings {
+  pauseMin: number;
+  pauseMax: number;
+  maxWhileNumber: number;
+}
+
+export interface PeriodicCrawlerOptionsDefaults {
   proxy: PeriodicCrawlerOptionsProxy;
-  settings: {
-    pauseMin: number;
-    pauseMax: number;
-    maxWhileNumber: number;
-  };
+  settings: PeriodicCrawlerOptionsSettings;
   gotOptions: Record<string, any>;
 }

@@ -5,7 +5,7 @@ import proxyFilter from './proxy-filter';
 import proxyToAgent from './proxy-to-agent';
 import {
   AgentObject,
-  PeriodicCrawlerOptions,
+  PeriodicCrawlerOptionsDefaults,
   PeriodicCrawlerOptionsProxy,
   UrlBodyObject
 } from './types';
@@ -32,7 +32,7 @@ async function whatProxyToUse(
 
 export default async function createPeriodicCrawler(
   arrayUrls: string[],
-  options: PeriodicCrawlerOptions
+  options: PeriodicCrawlerOptionsDefaults
 ): Promise<UrlBodyObject[]> {
   const filteredProxiesAgents = await whatProxyToUse(options.proxy);
   const gotOptions = options.gotOptions;

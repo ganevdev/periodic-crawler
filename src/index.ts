@@ -1,7 +1,9 @@
-import createPeriodicCrawler from './create-periodic-crawler';
-import { PeriodicCrawlerOptions, UrlBodyObject } from './types';
+import _ from 'lodash/fp';
 
-const defaults: PeriodicCrawlerOptions = {
+import createPeriodicCrawler from './create-periodic-crawler';
+import { PeriodicCrawlerOptionsDefaults, UrlBodyObject } from './types';
+
+const defaults: PeriodicCrawlerOptionsDefaults = {
   proxy: {
     useProxy: false,
     filterProxy: true,
@@ -24,9 +26,9 @@ const defaults: PeriodicCrawlerOptions = {
 
 async function periodicCrawler(
   urls: string[],
-  options = defaults
+  options?: Record<string, any>
 ): Promise<UrlBodyObject[]> {
-  return await createPeriodicCrawler(urls, options);
+  return await createPeriodicCrawler(urls, _.assign(defaults, options));
 }
 
 /* eslint-disable fp/no-mutation */
