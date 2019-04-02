@@ -52,12 +52,3 @@ node_modules/
 .serverless/
 yarn.lock
 package-lock.json
-
-# скачиваемые HTML проекта
-src/import-clean/liquidpedia/players-dow/html/**/**/*.html
-
-# не нужные json тестов
-src/dow-esport/__tests__/json/**/*
-
-# авторизация гугла
-esportSet-dd7a250309a7.json
