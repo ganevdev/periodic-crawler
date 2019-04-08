@@ -9,6 +9,8 @@ I do NOT recommend using it in real projects.
 npm i periodic-crawler
 ```
 
+## Exsampls
+
 ```js
 const periodicCrawler = require('periodic-crawler');
 
@@ -34,3 +36,7 @@ async () => {
 //   }
 // ]
 ```
+
+## TODO
+
+- [Puppeteer](https://pptr.dev/) option for scrapping
